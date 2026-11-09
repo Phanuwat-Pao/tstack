@@ -16,7 +16,9 @@ assume full autonomy. If they did, everything below applies.
 The user grants you permission to:
 
 - Merge the PR once the merge gate passes.
-- Force-push the PR's own branch with `--force-with-lease` after a rebase.
+- Merge the default branch into the PR's own branch and push it. Never rebase
+  or force-push, `--force-with-lease` included. In a conflict the default
+  branch wins unless the hunk is the change this PR delivers.
 - Use the test methods that Proof needs, without asking first.
 
 ## Testing permission
@@ -47,8 +49,9 @@ one appears.
    that could. If you are on the default branch, create a branch first.
 2. **Prove it.** Get proof for every change you made. See "Proof".
 3. **Get feedback.** Use the `sol-loop` skill to verify changes.
-4. **File the PR** with the `file-pr` skill. Rebase onto the latest default
-   branch first. Add one short line to the description that says how you proved
+4. **File the PR** with the `file-pr` skill. Merge the latest default branch
+   in first (`git fetch` then `git merge origin/<default>`), never rebase. Add
+   one short line to the description that says how you proved
    the change.
 5. **Babysit the PR** with the `babysit-pr` skill. Fix real findings and CI
    failures. Get proof for each fix before you push it.
@@ -110,8 +113,8 @@ Ask only when you cannot continue alone:
 - You cannot prove the change.
 - The merge gate cannot pass, and you cannot fix that yourself.
 - The next step is outside the grant above: deleting data, touching production,
-  changing things outside the repo, closing a PR, or force-pushing any other
-  branch.
+  changing things outside the repo, closing a PR, or rebasing or
+  force-pushing any branch.
 - The goal is ambiguous in a way that changes the result.
 - Another PR makes this one obsolete.
 

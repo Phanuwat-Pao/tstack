@@ -101,7 +101,10 @@ narrows code.
 
 ## Base branch and merging
 
-Keep an eye on changes to `main` and rebase when needed. `pr-wait` reports when
+Keep an eye on changes to `main` and merge it into the PR branch when needed
+(`git merge origin/main`, then a plain push). Never rebase or force-push. In a
+conflict `main` wins unless the hunk is the change this PR delivers; say which
+side you kept. `pr-wait` reports when
 new base commits touch this PR's files, and when the PR becomes BEHIND or DIRTY.
 `watch_pull_request` reports conflicts only, so check for BEHIND yourself
 before you call the PR ready.
@@ -113,5 +116,5 @@ when `pr-wait` exits 0, or in T3 Code when the merge gate passes on the latest
 head. Merge only when the user explicitly requested it;
 otherwise report that the PR is ready. Right before a merge, run `git fetch` and
 check the PR again. Never merge when it is BEHIND or DIRTY, or when base commits
-that landed after the last green run touch this PR's files. Rebase, push, and
-wait for green again.
+that landed after the last green run touch this PR's files. Merge the base in,
+push, and wait for green again.
