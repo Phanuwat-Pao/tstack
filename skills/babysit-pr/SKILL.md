@@ -86,18 +86,21 @@ reply to a Macroscope finding. Its findings cite them.
 CodeRabbit is advisory. Treat its findings like any other finding, but never
 wait for it and never hold a merge for it.
 
-If a review bot leaves feedback you believe is not worth addressing, reply with
-a written reason and resolve the comment. Use the `leaving-pr-comments` skill
-for every comment posted on the user's behalf.
+If a review bot's finding is wrong, or asks for something that is not a bug
+and the change does not need, reply with a written reason and resolve the
+comment. A real bug is never in that group. Fix it. Use the
+`leaving-pr-comments` skill for every comment posted on the user's behalf.
 
 Screenshots and videos help as well, when you have a way to upload them.
 
 Keep the PR at the size the user's goal needs. Review loops tend to grow a
-PR one cheap-looking fix at a time. Fix real bugs in the intended case.
-Decline the rest with a written reason, and list them as follow-ups:
-unneeded tests, guards for edge cases that do not matter, extra integration
-or compatibility, and small performance costs. Prefer the fix that deletes or
-narrows code.
+PR one cheap-looking fix at a time. Fix every real bug a finding points to,
+in this pass, including bugs outside the intended case. Never list a finding
+as a follow-up or leave it for later. Suggestions that are not bugs are
+different: unneeded tests, guards for cases that cannot happen, extra
+integration or compatibility, and small performance costs. Decline those
+with a written reason why the change does not need them. Prefer the fix that
+deletes or narrows code.
 
 ## Base branch and merging
 

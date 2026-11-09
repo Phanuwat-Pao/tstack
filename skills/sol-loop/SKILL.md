@@ -69,9 +69,9 @@ Repo: <abs path> Base: <sha> Intent: <intent> Out of scope: <scope> Checks: <res
 See: git diff <base> [-- <paths>]; git status --short (read untracked).
 Read surrounding code. Find bugs, broken callers, mismatch with intent.
 Skip style unless it hides a bug. Hold to the smallest change. Flag code,
-tests, or guards the intent does not need. Other paths, rare cases, small
-perf, extra compat: nits.
-blocker = intended case wrong. should = real bug callers will hit, in intent. nit = rest.
+tests, or guards the intent does not need. Small perf, extra compat, and
+guards for cases that cannot happen: nits.
+blocker = intended case wrong. should = any other real bug, rare paths included. nit = rest.
 Reply:
 VERDICT: APPROVE or CHANGES
 S1 [blocker|should|nit] <file>:<line> <claim>. Fix: <suggestion> (stable ids)
@@ -79,17 +79,21 @@ S1 [blocker|should|nit] <file>:<line> <claim>. Fix: <suggestion> (stable ids)
 
 ## 3. Answer findings
 
-Check each finding and severity yourself. Another path, rare case, or
-small cost is a nit, whatever label it came with.
+Check each finding and severity yourself. A real bug is a should whatever
+label it came with, even on a rare path. A small cost, or a suggestion that
+is not a bug, is a nit.
 
 - Agree: smallest fix. Prefer delete or narrow over new lock, cache,
   helper, or option. Fix the case that happened. Add one focused test
   that fails without the fix, if intent needs it.
 - Disagree: say why, with evidence (file:line, test, output).
-- Out of scope or nit: decline in one line. List as follow-up.
+- Nit: decline in one line, with the reason the change does not need it.
+  Never list it as a follow-up. A real bug is never a nit or out of scope.
+  Fix it this round.
 
 Update the ledger. Re-run checks and `git diff --shortstat <base>`. If
-review grew the diff, cut first. Do not agree just to end the loop.
+review grew the diff with anything other than bug fixes, cut that first.
+Do not agree just to end the loop.
 
 ## 4. Next round
 

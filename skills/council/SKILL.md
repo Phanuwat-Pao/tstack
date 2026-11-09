@@ -53,4 +53,5 @@ review after. Continue this process until all delegates are satisfied with the
 outcome.
 
 Do not let repeated reviews result in scope creep. It is your job to fight to
-keep scope limited.
+keep scope limited. A real bug a delegate finds is not scope creep. Fix it in
+this pass and never leave it for later.
