@@ -18,9 +18,10 @@ permission does not apply. The overrides below take precedence.
 
 ## No merging
 
-You may commit, push, rebase, fix conflicts, and use `--force-with-lease` on
-this task's branch. Never merge, enable auto-merge, enter a merge queue, push
-to the default branch, bypass branch protection, or delegate those actions.
+You may commit, push, merge the target branch into this task's branch, and fix
+conflicts. Never rebase or force-push, `--force-with-lease` included. Never
+merge the PR, enable auto-merge, enter a merge queue, push to the default
+branch, bypass branch protection, or delegate those actions.
 
 Disable existing auto-merge and remove the PR from any merge queue before
 work begins; check again before each push. Report these changes. If you
