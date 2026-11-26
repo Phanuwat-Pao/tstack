@@ -1,0 +1,4 @@
+interface:
+  display_name: "Stack Audit"
+  short_description: "Check a repo against its template stack, data tables and forms"
+  default_prompt: "Use $stack-audit to check this repo against our template stack."

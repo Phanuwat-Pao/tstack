@@ -18,6 +18,7 @@ not.
 | `babysit-pr` | "babysit" | Watches a PR through CI and review bots, and fixes the real findings. |
 | `modernize` | "modernize" | Rebases an old PR and decides if it should still exist. |
 | `line-message` | "line message" | Writes one Thai LINE message in a copy block, counted to fit LINE's 5,000-character limit. |
+| `stack-audit` | "stack audit" | Checks a repo against its template stack: dependencies and tooling, shadcn data tables on TanStack Table with server-side page-number paging, and TanStack Form. Read-only. |
 | `leaving-pr-comments` | (automatic) | Formats comments that an agent posts on your behalf. |
 
 Some skills call others. Install the ones they need too:
@@ -39,7 +40,10 @@ cp -R tstack/skills/* ~/.codex/skills/    # Codex
 
 - An authenticated [GitHub CLI](https://cli.github.com) (`gh`).
 - `python3` for `babysit-pr`'s `pr-wait` script.
-- `node` for `line-message`'s `count.mjs` script.
+- `node` for `line-message`'s `count.mjs` and `stack-audit`'s
+  `stack-diff.mjs` scripts.
+- `stack-audit` compares against a template repo. Name yours in your
+  `CLAUDE.md` or `AGENTS.md`; without one it uses `~/create-t3-turbo`.
 - `council` and `sol-loop` need subagents on other providers' models. T3 Code
   does this with `delegate_task`. Otherwise you need a harness that can run
   those models.
