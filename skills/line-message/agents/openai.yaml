@@ -1,0 +1,4 @@
+interface:
+  display_name: "LINE Message"
+  short_description: "Write one copyable Thai LINE message within the character limit"
+  default_prompt: "Use $line-message to turn this into one Thai LINE message I can copy."
